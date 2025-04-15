@@ -1,11 +1,11 @@
--- region table
+-- Region Table
 CREATE TABLE region (
     r_regionkey INTEGER PRIMARY KEY,
     r_name CHAR(25) NOT NULL,
     r_comment VARCHAR(152)
 );
 
--- nation table
+-- Nation Table
 CREATE TABLE nation (
     n_nationkey INTEGER PRIMARY KEY,
     n_name CHAR(25) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE nation (
     FOREIGN KEY (n_regionkey) REFERENCES region(r_regionkey)
 );
 
--- customer table
+-- Customer Table
 CREATE TABLE customer (
     c_custkey BIGINT PRIMARY KEY,
     c_name VARCHAR(25) NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE customer (
     FOREIGN KEY (c_nationkey) REFERENCES nation(n_nationkey)
 );
 
--- supplier table
+-- Supplier Table
 CREATE TABLE supplier (
     s_suppkey BIGINT PRIMARY KEY,
     s_name CHAR(25) NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE supplier (
     FOREIGN KEY (s_nationkey) REFERENCES nation(n_nationkey)
 );
 
--- part table
+-- Part Table
 CREATE TABLE part (
     p_partkey BIGINT PRIMARY KEY,
     p_name VARCHAR(55) NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE part (
     p_comment VARCHAR(23) NOT NULL
 );
 
--- partsupp table
+-- PartSupp Table
 CREATE TABLE partsupp (
     ps_partkey BIGINT NOT NULL,
     ps_suppkey BIGINT NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE partsupp (
     FOREIGN KEY (ps_suppkey) REFERENCES supplier(s_suppkey)
 );
 
--- orders table
+-- Orders Table
 CREATE TABLE orders (
     o_orderkey BIGINT PRIMARY KEY,
     o_custkey BIGINT NOT NULL,
@@ -78,7 +78,7 @@ CREATE TABLE orders (
     FOREIGN KEY (o_custkey) REFERENCES customer(c_custkey)
 );
 
--- lineitem table
+-- LineItem Table
 CREATE TABLE lineitem (
     l_orderkey BIGINT NOT NULL,
     l_partkey BIGINT NOT NULL,
